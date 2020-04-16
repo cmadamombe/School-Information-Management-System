@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=simspro
+POSTGRES_USER=SwjkDxgqQyeHXhIGAUJZjFMoFmdwIMuS
+POSTGRES_PASSWORD=bfBP1HjWJ73R4SNBovV2jJtlM6tfUsfujQzT6l4dfUJSR2Gq2P5sKbf10cDL0J8e
