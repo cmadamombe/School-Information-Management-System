@@ -1,17 +1,26 @@
-{% extends "base.html" %}
+{% extends "master_layout.html" %}
 {% load static %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-<div class="container">
+	<!-- /.panel -->
+    <div class="panel panel-default">
+	<!-- /.panel-heading -->
+    <div class="panel-heading">
+     <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+     </div>
+     <!-- /.panel-heading -->
+     <div class="panel-body">
+
+ <div class="container">
 
   <div class="row">
     <div class="col-sm-12">
 
       <h2>{{ object.username }}</h2>
       {% if object.name %}
-        <p>{{ object.name }}</p>
+        <p>Name: {{ object.name }}</p>
       {% endif %}
     </div>
   </div>
@@ -32,5 +41,10 @@
 
 
 </div>
+
+    </div>
+     <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
 {% endblock content %}
 

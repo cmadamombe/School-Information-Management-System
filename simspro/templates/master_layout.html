@@ -47,7 +47,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">simspro.net</a>
+                    <a class="navbar-brand" href="{% url "home" %}">simspro.net</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -223,10 +223,10 @@
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-cogs fa-fw"></i> Settings<b class="caret"></b>
+                            <i class="fa fa-cogs fa-fw"></i> Config<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Configurations</a></li>
+                            <li><a href="#"><i class="fa fa-building fa-fw"></i> School Profile</a></li>
                             <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Internet access points</a></li>
                             <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Templates</a></li>
                             <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Backups</a></li>
@@ -242,36 +242,33 @@
                             <i class="fa fa-user fa-fw"></i> Hi, {{request.user.username}} <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User profile</a></li>
+                            <li><a href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-user fa-fw"></i> User profile</a></li>
                             <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Signature</a></li>
                             <li><a href="#"><i class="fa fa-file-text-o fa-fw"></i> ID card</a></li>
                             <li><a href="#"><i class="fa fa-files-o fa-fw"></i> Documents</a></li>
                             <li><a href="#"><i class="fa fa-table fa-fw"></i> Timetable</a></li>
                             <li class="divider"></li>
+                            <li><a href="{% url 'account_change_password' %}"><i class="fa fa-sign-out fa-fw"></i> Change Password</a>
                             <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
 
-                  {% endif %}
+                  {% else %}
 
                   <li>
-                        <a href="#">
-                            <i class="fa fa-th fa-fw"></i> About
-                        </a>
-                  </li>
-
-                  <li>
-                        <a href="#">
+                        <a href="{% url 'account_signup' %}">
                             <i class="fa fa-group fa-fw"></i> Sign Up
                         </a>
                   </li>
 
                   <li>
-                        <a href="#">
+                        <a href="{% url 'account_login' %}">
                             <i class="fa fa-sign-in fa-fw"></i> Sign In
                         </a>
                   </li>
+
+                  {% endif %}
 
                 </ul>
                 <!-- /.navbar-top-links -->
@@ -365,17 +362,17 @@
 
                           {% endif %}
 
-                        <li>
+                          <li>
                                 <a href="{% url 'home' %}"><i class="fa fa-reorder fa-fw"></i> About Simspro.net</a>
-                        </li>
+                           </li>
 
-                        <li>
+                          <li>
                                 <a href="{% url 'support' %}"><i class="fa fa-question fa-fw"></i> Get Support</a>
-                        </li>
+                          </li>
 
-                        <li>
-                                <a href="#"><i class="fa fa-folder fa-fw"></i> Documentation</a>
-                        </li>
+                          <li>
+                                <a href="https://docs.simspro.net" target="_blank"><i class="fa fa-folder fa-fw"></i> Documentation</a>
+                          </li>
 
                         </ul>
 
@@ -387,18 +384,26 @@
 
             <!-- Page Content -->
             <div id="page-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
+            <div class="container-fluid">
+            <div class="row">
+            <div class="col-lg-12">
+              <h4 class="page-header">
+                {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+          {% endif %}
 
-                        <!-- /.col-lg-12 -->
-                    </div>
-                    <!-- /.row -->
+              </h4>
+            </div>
+            </div>
+
 							{% block content %}
 
 							{% endblock content %}
                 </div>
                 <!-- /.container-fluid -->
-            </div>
+
             <!-- /#page-wrapper -->
 
         </div>

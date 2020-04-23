@@ -5,6 +5,12 @@ from pathlib import Path
 
 import environ
 
+import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 ROOT_DIR = Path(__file__).parents[2]
 # simspro/)
 APPS_DIR = ROOT_DIR / "simspro"
@@ -76,6 +82,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "simspro.users.apps.UsersConfig",
     "simspro.main.apps.MainConfig",
+    "simspro.setup.apps.SetupConfig",
+    "simspro.employee.apps.EmployeeConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -96,7 +104,8 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+#LOGIN_REDIRECT_URL = "users:redirect"
+LOGIN_REDIRECT_URL = "main:user_dashboard"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
@@ -152,9 +161,12 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
+#MEDIA_ROOT = str(APPS_DIR / "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
+#MEDIA_URL = "/media/"
+MEDIA_URL = '/media/'
+
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
@@ -263,7 +275,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "simspro.users.adapters.AccountAdapter"
+#ACCOUNT_ADAPTER = "simspro.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = 'simspro.users.adapters.NoNewUsersAccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "simspro.users.adapters.SocialAccountAdapter"
 

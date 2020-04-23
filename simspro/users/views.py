@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
+#from simspro.users.models import TeacherProfile
 
 User = get_user_model()
 
@@ -20,8 +21,10 @@ user_detail_view = UserDetailView.as_view()
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
 
-    model = User
-    fields = ["name"]
+    #model = User
+    #model = TeacherProfile
+    #fields = ["name"]
+    fields = '__all__'
 
     def get_success_url(self):
         return reverse("users:detail", kwargs={"username": self.request.user.username})

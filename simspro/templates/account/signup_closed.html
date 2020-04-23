@@ -4,9 +4,25 @@
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
 
-{% block inner %}
-<h1>{% trans "Sign Up Closed" %}</h1>
+{% block content %}
 
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+	<!-- /.panel -->
+    <div class="panel panel-default">
+	<!-- /.panel-heading -->
+    <div class="panel-heading">
+     <i class="fa  fa-user-times fa-fw"></i> The Sign Up is Currently Closed!
+     </div>
+     <!-- /.panel-heading -->
+     <div class="panel-body">
+
+    <p>
+      {% trans "We are sorry, but the sign up is currently closed. If you do not have a username and a password, please contact your Sustems Administrator."%}
+    </p>
+
+    </div>
+     <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+
 {% endblock %}
 

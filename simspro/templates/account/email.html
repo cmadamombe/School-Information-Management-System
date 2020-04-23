@@ -7,7 +7,17 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block inner %}
-<h1>{% trans "E-mail Addresses" %}</h1>
+
+
+	<!-- /.panel -->
+    <div class="panel panel-default">
+	<!-- /.panel-heading -->
+    <div class="panel-heading">
+     <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+     </div>
+     <!-- /.panel-heading -->
+     <div class="panel-body">
+
 
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
@@ -76,5 +86,10 @@
 
 $('.form-group').removeClass('row');
 </script>
+
+    </div>
+     <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
 {% endblock %}
 
