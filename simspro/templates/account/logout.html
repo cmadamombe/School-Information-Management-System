@@ -2,41 +2,44 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block head_title %}{% trans "Sign Out | simspro.net" %}{% endblock %}
 
-{% block inner %}
+{% block content %}
 
-  <!-- /.panel -->
-    <div class="panel panel-default">
-	<!-- /.panel-heading -->
-    <div class="panel-heading">
-     <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-     </div>
-     <!-- /.panel-heading -->
-     <div class="panel-body">
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fas fa-sign-out-alt"></i> Log out </h3> 
 
- <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12"> <h3 class="page-header">You will be signed out of the system</h3></div>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fas fa-minus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+        <i class="fas fa-times"></i></button>
+    </div>
   </div>
-
-<p>{% trans 'Are you sure you want to sign out? Please confirm!' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
-
+  <div class="card-body">
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+      You will be signed out of the system. Are you sure you want to sign out? Please confirm!
     </div>
-     <!-- /.panel-body -->
-    </div>
-    <!-- /.panel -->
-
-
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+      <button class="btn btn-primary" type="submit">{% trans 'Sign Out' %}</button>
+    </form>
+  </div>
+  <!-- /.card-body 
+  <div class="card-footer">
+    Footer
+  </div>-->
+  <!-- /.card-footer-->
+</div>
+<!-- /.card -->
 
 {% endblock %}
+
+
 

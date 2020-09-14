@@ -1,48 +1,21 @@
-'''
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from .models import Fees
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
-from simspro.setup.models import SchoolProfile
+from django import forms
 
-class SchoolProfileDetailView(LoginRequiredMixin, DetailView):
-
-    model = SchoolProfile
-    slug_field = "name"
-    slug_url_kwarg = "name"
-
-school_profile_detail_view = SchoolProfileDetailView.as_view()
-
-class SchoolProfileUpdateView(LoginRequiredMixin, UpdateView):
-
-    model = SchoolProfile
-    fields = '__all__'
+class AddFeesView(LoginRequiredMixin, CreateView):
+    model = Fees
+    template_name = 'setup/add_fees.html'
+    fields = ('fee_code', 'fee_description', 'fee_amount', 'academic_year', 'term', 'grade_level')
+    success_url = reverse_lazy('add_fees')
 
     def get_success_url(self):
-        return reverse("setup:detail", kwargs={"name": self.request.user.username})
-
-    def get_object(self):
-        #return SchoolProfile.objects.get(name=self.request.user.username)
-        return SchoolProfile.objects.get()
-
+        return reverse("setup:add_fees")
+    
     def form_valid(self, form):
-        messages.add_message(
-            self.request, messages.INFO, _("School details successfully updated")
-        )
+        form.instance.created_by = self.request.user
+        messages.add_message(self.request, messages.SUCCESS, ("The Fee Instance Has Been Successfully Created."))
         return super().form_valid(form)
-
-
-school_profile_update_view = SchoolProfileUpdateView.as_view()
-
-
-class SchoolProfileRedirectView(LoginRequiredMixin, RedirectView):
-
-    permanent = False
-
-    def get_redirect_url(self):
-        return reverse("setup:detail", kwargs={"username": self.request.user.username})
-
-school_profile_redirect_view = SchoolProfileRedirectView.as_view()
-
-'''

@@ -84,6 +84,8 @@ LOCAL_APPS = [
     "simspro.main.apps.MainConfig",
     "simspro.setup.apps.SetupConfig",
     "simspro.employee.apps.EmployeeConfig",
+    "simspro.students.apps.StudentsConfig",
+    "simspro.parents.apps.ParentsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -98,7 +100,7 @@ MIGRATION_MODULES = {"sites": "simspro.contrib.sites.migrations"}
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#authentication-backends
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
+    #"django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model

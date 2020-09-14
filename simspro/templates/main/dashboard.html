@@ -7,196 +7,214 @@ Dashboard | SIMS Pro
 {% endblock title %}
 
 {% block content %}
-<!-- /.panel -->
-    <div class="panel panel-default">
-	<!-- /.panel-heading -->
-    <div class="panel-heading">
-     <i class="fa fa-dashboard fa-fw"></i> Dashboard
-     </div>
-     <!-- /.panel-heading -->
-     <div class="panel-body">
+        <!-- Small Box (Stat card) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>2020  T1</h3>
 
-                     <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">2020</div>
-                                            <div>Term 2</div>
-                                            <div>01 Aug - 31 Mar</div>
-                                            <div>21 days left</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-tasks fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">2,500</div>
-                                            <div>Total students</div>
-                                            <div>Male: 1,200</div>
-                                            <div>Female: 1,300</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-shopping-cart fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">500</div>
-                                            <div>Total staff</div>
-                                            <div>Male: 200</div>
-                                            <div>Female: 300</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-support fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">96%</div>
-                                            <div> Students attendance!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="{% url 'main:reports' %}">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">View all reports...</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div id="morris-area-chart"></div>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-
-
-                            <!-- /.panel -->
-
-                                <!-- /.panel-body -->
-
-                            <!-- /.panel -->
-                        </div>
-                        <!-- /.col-lg-8 -->
-                        <div class="col-lg-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-comment fa-fw"></i> New Comment
-                                                <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                                <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                                <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-tasks fa-fw"></i> New Task
-                                                <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                                <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                                <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                                <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                                <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-money fa-fw"></i> Payment Received
-                                                <span class="pull-right text-muted small"><em>Yesterday</em>
-                                                </span>
-                                        </a>
-                                    </div>
-                                    <!-- /.list-group -->
-                                    <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-
-                                <!-- /.panel-body -->
-
-
-                                <!-- /.panel-footer -->
-                            </div>
-                            <!-- /.panel .chat-panel -->
-                        </div>
-                        <!-- /.col-lg-4 -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
+                <p>01 Aug - 31 Dec</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <p class="small-box-footer">
+                50 days left to complete
+              </p>
             </div>
-            <!-- /#page-wrapper -->
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>530<sup style="font-size: 20px"></sup></h3>
 
-    </div>
-     <!-- /.panel-body -->
-    </div>
-    <!-- /.panel -->
+                <p>Total students</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <p class="small-box-footer">
+                Male: 500 | Female: 200
+              </p>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
 
+                <p>Total teachers</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <p class="small-box-footer">
+                Male: 500 | Female: 200
+              </p>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Non teaching staff</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <p class="small-box-footer">
+                Male: 500 | Female: 200
+              </p>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+  <!-- /.charts -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Monthly Recap Report</h5>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-wrench"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" role="menu">
+                <a href="#" class="dropdown-item">Action</a>
+                <a href="#" class="dropdown-item">Another action</a>
+                <a href="#" class="dropdown-item">Something else here</a>
+                <a class="dropdown-divider"></a>
+                <a href="#" class="dropdown-item">Separated link</a>
+              </div>
+            </div>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-center">
+                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+              </p>
+
+              <div class="chart">
+                <!-- Sales Chart Canvas -->
+                <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+              </div>
+              <!-- /.chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+              <p class="text-center">
+                <strong>Goal Completion</strong>
+              </p>
+
+              <div class="progress-group">
+                Add Products to Cart
+                <span class="float-right"><b>160</b>/200</span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-primary" style="width: 80%"></div>
+                </div>
+              </div>
+              <!-- /.progress-group -->
+
+              <div class="progress-group">
+                Complete Purchase
+                <span class="float-right"><b>310</b>/400</span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-danger" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <!-- /.progress-group -->
+              <div class="progress-group">
+                <span class="progress-text">Visit Premium Page</span>
+                <span class="float-right"><b>480</b>/800</span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-success" style="width: 60%"></div>
+                </div>
+              </div>
+
+              <!-- /.progress-group -->
+              <div class="progress-group">
+                Send Inquiries
+                <span class="float-right"><b>250</b>/500</span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-warning" style="width: 50%"></div>
+                </div>
+              </div>
+              <!-- /.progress-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-3 col-6">
+              <div class="description-block border-right">
+                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                <h5 class="description-header">$35,210.43</h5>
+                <span class="description-text">TOTAL REVENUE</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+              <div class="description-block border-right">
+                <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                <h5 class="description-header">$10,390.90</h5>
+                <span class="description-text">TOTAL COST</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+              <div class="description-block border-right">
+                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                <h5 class="description-header">$24,813.53</h5>
+                <span class="description-text">TOTAL PROFIT</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+              <div class="description-block">
+                <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                <h5 class="description-header">1200</h5>
+                <span class="description-text">GOAL COMPLETIONS</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
 {% endblock content %}

@@ -6,19 +6,18 @@
 
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
-{% block inner %}
-
-
-	<!-- /.panel -->
-    <div class="panel panel-default">
-	<!-- /.panel-heading -->
-    <div class="panel-heading">
-     <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-     </div>
-     <!-- /.panel-heading -->
-     <div class="panel-body">
-
-
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fas fa-envelope"></i> Update user emails</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fas fa-minus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+        <i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  <div class="card-body">
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
@@ -87,9 +86,13 @@
 $('.form-group').removeClass('row');
 </script>
 
-    </div>
-     <!-- /.panel-body -->
-    </div>
-    <!-- /.panel -->
+</div>
+<!-- /.card-body -->
+<div class="card-footer">
+  Footer
+</div>
+<!-- /.card-footer-->
+</div>
+<!-- /.card -->
 {% endblock %}
 

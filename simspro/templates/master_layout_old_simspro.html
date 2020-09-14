@@ -1,0 +1,445 @@
+{% load static %} <!--# tag links the static elements in the template to your STATIC_ROOT.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+		<title>
+			{% block title %}
+			{{ page_title|default:"Untitled Page" }}
+			{% endblock title %}
+		</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'simspro/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="{% static 'simspro/css/metisMenu.min.css' %}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="{% static 'simspro/css/startmin.css' %}" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="{% static 'simspro/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+        <!-- Timeline CSS -->
+        <link href="{% static 'simspro/css/timeline.css' %}" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="{% static 'simspro/css/morris.css' %}" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url "home" %}">simspro.net</a>
+                </div>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                {% if request.user.is_authenticated %}
+
+                <ul class="nav navbar-nav navbar-left navbar-top-links">
+                    <li><a href="{% url 'main:user_dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                </ul>
+
+                {% endif %}
+
+                <ul class="nav navbar-right navbar-top-links">
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Enrol<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="{% url 'students:add_student' %}"><i class="fa fa-user-plus fa-fw"></i> Add New Student</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Registry</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> New</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Print student ID</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Class allocation</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Enrolment promotion</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Deleted students</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Reset student password</a></li>
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Parent login reminder</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Parents</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Staff</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Student registration form</a></li>
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Billing<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Billing schedule</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Fees schedule</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Student accounts</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Payments</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Bank transactions</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Run</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Billing statement</a></li>
+
+                             <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Daily reports</a></li>
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Monthly reports</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Termly reports</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Accounts in debt</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Accounts in credit</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Accounts on zero balance</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Chart of accounts</a></li>
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Daily exchange rates</a></li>
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Academics<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> All subjects</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Subject groups</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Student details</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Manage courses</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Manage classes</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Manage qualifications</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Manage subjects</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Manage exam attributes</a>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Sports teams</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Sports players</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Library circulation</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Library catalogue</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Library courseware</a></li>
+
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Manage<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="{% url 'employee:add_employee' %}"><i class="fa fa-user-plus fa-fw"></i> Add Employee</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Roles</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Campuses</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Departments</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Enrolment types</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Sports courses</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Sports teams</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Enrolment based fees</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Class subject fees</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Currencies</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Budgeting and banking</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Bank accounts</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Demerit codes</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Lookup lists</a></li>
+
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Communication<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Contact lists</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Send SMS</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> SMS queue</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Send email</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Email queue</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Reports</a></li>
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-cogs fa-fw"></i> Config<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-building fa-fw"></i> School Profile</a></li>
+                            <li><a href="{% url 'setup:add_fees' %}"><i class="fa fa-calculator fa-fw"></i> Fees Set Up</a></li>
+                            <li><a href="#"><i class="fa fa-internet-explorer fa-fw"></i> Internet access points</a></li>
+                            <li><a href="#"><i class="fa fa-th-large fa-fw"></i> Templates</a></li>
+                            <li><a href="#"><i class="fa fa-cloud-download fa-fw"></i> Backups</a></li>
+                        </ul>
+                    </li>
+
+                  {% endif %}
+
+                  {% if request.user.is_authenticated %}
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i> Hi, {{request.user.username}} <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-user fa-fw"></i> User profile</a></li>
+                            <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Signature</a></li>
+                            <li><a href="#"><i class="fa fa-file-text-o fa-fw"></i> ID card</a></li>
+                            <li><a href="#"><i class="fa fa-files-o fa-fw"></i> Documents</a></li>
+                            <li><a href="#"><i class="fa fa-table fa-fw"></i> Timetable</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'account_change_password' %}"><i class="fa fa-sign-out fa-fw"></i> Change Password</a>
+                            <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                  {% else %}
+
+                  <li>
+                        <a href="{% url 'parents:add_parent' %}">
+                         <i class="fa fa-group fa-fw"></i> New Parent
+                        </a>
+                 </li>
+
+                  <li>
+                        <a href="{% url 'account_signup' %}">
+                            <i class="fa fa-group fa-fw"></i> New Staff
+                        </a>
+                  </li>
+
+                  <li>
+                        <a href="{% url 'account_signup' %}">
+                            <i class="fa fa-group fa-fw"></i> New Student
+                        </a>
+                   </li>
+                   
+                  <li>
+                        <a href="{% url 'account_login' %}">
+                            <i class="fa fa-sign-in fa-fw"></i> Log In
+                        </a>
+                  </li>
+
+                  {% endif %}
+
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+                            </li>
+
+                          {% if request.user.is_authenticated %}
+
+                          <li>
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i> Extras<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="panels-wells.html">Staff clock in/out</a>
+                                    </li>
+                                    <li>
+                                        <a href="buttons.html">Students clock in/out</a>
+                                    </li>
+                                    <li>
+                                        <a href="notifications.html">Clock in/out reports</a>
+                                    </li>
+                                    <li>
+                                        <a href="notifications.html">Boarding & accommodation</a>
+                                    </li>
+                                    <li>
+                                        <a href="notifications.html">Facilities</a>
+                                    </li>
+                                    <li>
+                                        <a href="notifications.html">Assets</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                          </li>
+
+                          {% endif %}
+
+                          {% if request.user.is_authenticated %}
+
+                          <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Calendar and schedules<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="hh">Time periods</a>
+                                    </li>
+                                    <li>
+                                        <a href="vv">Meeting and events</a>
+                                    </li>
+                                    <li>
+                                        <a href="vv">Examination schedule</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                          {% endif %}
+
+                          {% if request.user.is_authenticated %}
+
+                            <li>
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i> Store<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="panels-wells.html">Point of sale</a>
+                                    </li>
+                                    <li>
+                                        <a href="buttons.html">Products</a>
+                                    </li>
+                                    <li>
+                                        <a href="/main/reports.html">Reports</a>
+                                    </li>
+                                </ul>
+
+                          {% endif %}
+
+                          {% if request.user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'main:reports' %}"><i class="fa fa-dashboard fa-fw"></i> Reports</a>
+                            </li>
+
+                          {% endif %}
+
+                          <li>
+                                <a href="{% url 'home' %}"><i class="fa fa-reorder fa-fw"></i> About Simspro.net</a>
+                           </li>
+
+                          <li>
+                                <a href="{% url 'support' %}"><i class="fa fa-question fa-fw"></i> Get Support</a>
+                          </li>
+
+                          <li>
+                                <a href="https://docs.simspro.net" target="_blank"><i class="fa fa-folder fa-fw"></i> Documentation</a>
+                          </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <!-- Page Content -->
+            <div id="page-wrapper">
+            <div class="container-fluid">
+            <div class="row">
+            <div class="col-lg-12">
+              <h4 class="page-header">
+                {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+          {% endif %}
+
+              </h4>
+            </div>
+            </div>
+
+							{% block content %}
+
+							{% endblock content %}
+                </div>
+                <!-- /.container-fluid -->
+
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="{% static 'simspro/js/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'simspro/js/bootstrap.min.js' %}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{% static 'simspro/js/metisMenu.min.js' %}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{% static 'simspro/js/startmin.js' %}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="{% static 'simspro/js/raphael.min.js' %}"></script>
+        <script src="{% static 'simspro/js/morris.min.js' %}"></script>
+        <script src="{% static 'simspro/js/morris-data.js' %}"></script>
+
+    </body>
+</html>
+
+

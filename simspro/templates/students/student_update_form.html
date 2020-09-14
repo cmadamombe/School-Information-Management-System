@@ -1,0 +1,99 @@
+{% extends "master_layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}simspro.net | {{ user.username }}{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fas fa-users"></i> Update student details </h3> 
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fas fa-minus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+        <i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  <div class="card-body">
+
+  <form class="form-horizontal" method="post" action="{% url 'students:student_update' %}">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-3 mb-0">
+        {{ form.title|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.designation|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.gender|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.religion|as_crispy_field }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-0">
+        {{ form.student_number|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        {{ form.date_of_birth|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        {{ form.language|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 mb-0">
+        {{ form.nationality|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.qualification|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.marital_status|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.student_phone|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.address|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        {{ form.student_profile_summary|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-0">
+        {{ form.spouse_name|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        {{ form.spouse_email|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        {{ form.spouse_phone|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Update Student Information</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- /.card-body -->
+<div class="card-footer">
+  <p class="text-danger">NB: Disabled (greyed out) fields can only be updated by contacting the School administrator.</p>
+</div>
+<!-- /.card-footer-->
+</div>
+<!-- /.card -->
+{% endblock %}

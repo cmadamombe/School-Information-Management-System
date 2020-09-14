@@ -8,7 +8,7 @@ class EmployeesAdmin(admin.ModelAdmin):
         ('Employee Personal Details:', {  # The first fieldset is named “Employee personal details”
             'description': "Please capture the employees personal details: ",  # The first option sets the description for the group
             #'classes': ('collapse',), #Adds the collapse class to the fieldset. This will apply a JavaScipt accordion style that will make the fieldset appear collapsed when the form first displays
-            'fields': (("user","title", "first_name"), ("other_name", "last_name", "date_of_birth"), ("employee_email", "employee_phone"), ("designation", "date_of_joining", "gender"), ("religion", "language", "nationality"), ("marital_status", "profile_image", "qualification"))
+            'fields': (("user","title"), ("date_of_birth"), ("employee_phone"), ("designation", "date_of_joining", "gender"), ("religion", "language", "nationality"), ("marital_status", "profile_image", "qualification"))
         }),
 
         ('Physical Address & Profile Summary:', {  # The second fieldset/group
@@ -24,10 +24,10 @@ class EmployeesAdmin(admin.ModelAdmin):
         }),
     )  
     # Chooses the fields to display on the form
-    list_display = ["user", "employee_number", "employee_email", "employee_phone", "gender", "created_by", "created_date", "modified_by", "modified_date"]
+    list_display = ["user", "e_id", "employee_phone", "gender", "created_by", "created_date", "modified_by", "modified_date"]
     #The fields that will be used to search the database
-    search_fields = ["user","employee_number","employee_email"]
+    search_fields = ["user","e_id"]
     #Field the database according to the selected fields by default
     list_filter = ('gender', 'designation')
     #The results are in ascending order. To display results in descending order, use (-field_name e.g -user)
-    ordering = ('user',)
+    ordering = ('e_id',)
